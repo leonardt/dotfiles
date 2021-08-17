@@ -4,4 +4,7 @@ curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 mkdir -p ~/.config/nvim/init.vim
 ln -s $PWD/init.vim ~/.config/nvim/init.vim
 ln -s $PWD/zshrc ~/.zshrc
+
+mkdir -p $HOME/.config/alacritty
+ln -s $PWD/alacritty.yml ~/.config/alacritty/alacritty.yml
 ```
