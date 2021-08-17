@@ -1,7 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'ryanoasis/vim-devicons'
-
 Plug 'rhysd/vim-clang-format'
 
 Plug 'vim-airline/vim-airline'
@@ -18,7 +16,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
 Plug 'BurntSushi/ripgrep'
-Plug 'ihsanturk/neuron.vim'
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -33,19 +30,10 @@ Plug 'tpope/vim-dispatch'
 Plug 'cdonovick/python-syntax'
 let g:polyglot_disabled = ['latex']
 Plug 'sheerun/vim-polyglot'
-Plug 'rhysd/vim-wasm'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'mhinz/neovim-remote'
 
 Plug 'lervag/vimtex'
-
-Plug 'tmux-plugins/vim-tmux'
-
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
-
-Plug 'goerz/jupytext.vim'
 
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'arcticicestudio/nord-vim'
@@ -55,8 +43,6 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'nlknguyen/papercolor-theme'
 
 call plug#end()
-
-call glaive#Install()
 
 lua << EOF
 -- Compe setup
@@ -241,7 +227,6 @@ set wildignore+=*.orig                           " Merge resolution files
 
 nnoremap <c-p> :FzfPreviewFromResourcesRpc project_mru git<CR>
 nnoremap <leader>b :FzfPreviewBuffersRpc<CR>
-" nnoremap <leader>b :CocCommand fzf-preview.Buffers<CR>
 " nnoremap <c-p> :Files<CR>
 " nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Dispatch<CR>
@@ -249,12 +234,6 @@ nnoremap <leader>C :Dispatch make clean<CR>
 nnoremap <leader>a :AbortDispatch<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
-
-nmap <silent> <leader>d <Plug>DashSearch
-
-let g:UltiSnipsExpandTrigger='<c-k>'
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
@@ -269,7 +248,7 @@ fun! StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-" autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call StripTrailingWhitespaces()
+autocmd FileType c,cpp,python autocmd BufWritePre <buffer> :call StripTrailingWhitespaces()
 " autocmd bufwritepre * :call StripTrailingWhitespaces()
 
 " Make sure Vim returns to the same line when you reopen a file.
@@ -281,14 +260,6 @@ augroup line_return
         \     execute 'normal! g`"zvzz' |
         \ endif
 augroup END
-
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
-
-" Append --no-height for neovim terminal
-" let $FZF_DEFAULT_OPTS .= ' --no-height'
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
