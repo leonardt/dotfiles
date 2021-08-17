@@ -1,4 +1,4 @@
-fpath+=$HOME/.zsh/pure
+fpath=( "$HOME/dotfiles/zfunctions" $fpath )
 
 autoload -U promptinit; promptinit
 prompt pure
@@ -48,3 +48,5 @@ alias ls=exa
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source $HOME/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
