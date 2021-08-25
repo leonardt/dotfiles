@@ -41,6 +41,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nlknguyen/papercolor-theme'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
