@@ -1,5 +1,5 @@
 env:
-  TERM: xterm-24bit
+  TERM: xterm
 
 window:
   padding:
