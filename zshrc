@@ -19,6 +19,7 @@ alias vim=nvim
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
+<<<<<<< HEAD
 __conda_setup="$('/Users/leonardtruong/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -27,6 +28,16 @@ else
         . "/Users/leonardtruong/miniconda3/etc/profile.d/conda.sh"
     else
         export PATH="/Users/leonardtruong/miniconda3/bin:$PATH"
+=======
+__conda_setup="$('/home/lenny/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/lenny/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lenny/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/lenny/miniconda3/bin:$PATH"
+>>>>>>> d07380f (update)
     fi
 fi
 unset __conda_setup
@@ -52,5 +63,6 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 source $HOME/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# export CIRCT_HOME=/Users/leonardtruong/repos/circt
-export PATH=$PATH:/Users/leonardtruong/repos/circt/build/bin
+# export PATH="$HOME/miniconda3/bin:$PATH"
+export PATH=$HOME/.config/rofi/bin:$PATH
+export PATH=$HOME/repos/circt/build/bin:$PATH

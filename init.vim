@@ -42,7 +42,9 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nlknguyen/papercolor-theme'
+Plug 'whatyouhide/vim-gotham'
 Plug 'mattn/emmet-vim'
+Plug 'vim-autoformat/vim-autoformat'
 
 call plug#end()
 
@@ -171,9 +173,12 @@ let g:PaperColor_Theme_Options = {
 " let g:airline_theme = 'papercolor'
 " colorscheme PaperColor
 " set background=light
-let g:airline_theme = 'nord'
-colorscheme nord
-set background=dark
+" let g:airline_theme = 'nord'
+" colorscheme nord
+" set background=dark
+
+let g:airline_theme = 'gotham'
+colorscheme gotham
 
 let g:python_version_2 = 0
 let g:python_highlight_all = 1
