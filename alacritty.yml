@@ -8,7 +8,8 @@ window:
 
 font:
   normal:
-    family: Akkurat-Mono
+    # family: Akkurat-Mono
+    family: Monaco
     style: Regular
 
   size: 12
