@@ -1,5 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'rhysd/vim-clang-format'
 
 Plug 'vim-airline/vim-airline'
@@ -27,7 +29,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-dispatch'
 
-Plug 'cdonovick/python-syntax'
 let g:polyglot_disabled = ['latex']
 Plug 'sheerun/vim-polyglot'
 Plug 'vhda/verilog_systemverilog.vim'
@@ -110,11 +111,45 @@ vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
 vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
 
 require'lspconfig'.pylsp.setup{}
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "c", "cpp", "vim", "help", "python", "verilog",
+                       "latex", "bash", "mlir", "markdown", "markdown_inline",
+                       "yaml", "lua" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  highlight = {
+    enable = true,
+
+    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+    disable = function(lang, buf)
+        local max_filesize = 100 * 1024 -- 100 KB
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+            return true
+        end
+    end,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
 EOF
 
 if has('nvim')
-  let $VISUAL = 'nvr -cc split --remote-wait'
-  autocmd FileType gitcommit set bufhidden=delete
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 endif
 
 set termguicolors
@@ -133,9 +168,12 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
-let g:airline_theme = 'papercolor'
-colorscheme PaperColor
-set background=light
+" let g:airline_theme = 'papercolor'
+" colorscheme PaperColor
+" set background=light
+let g:airline_theme = 'nord'
+colorscheme nord
+set background=dark
 
 let g:python_version_2 = 0
 let g:python_highlight_all = 1
@@ -175,6 +213,7 @@ endif
 
 set autoindent
 set smartindent
+autocmd FileType verilog setlocal nosmartindent
 
 set incsearch
 set ignorecase
