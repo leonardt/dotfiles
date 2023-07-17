@@ -19,25 +19,14 @@ alias vim=nvim
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-<<<<<<< HEAD
-__conda_setup="$('/Users/leonardtruong/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/leonardtruong/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/leonardtruong/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/leonardtruong/miniconda3/bin:$PATH"
-=======
-__conda_setup="$('/home/lenny/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/lenny/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lenny/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/lenny/miniconda3/bin:$PATH"
->>>>>>> d07380f (update)
+        export PATH="$HOME/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
